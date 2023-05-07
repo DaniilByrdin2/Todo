@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import styles from './todo-list-header.module.css'
 
 const TodoHeader = ({toogleState, changeTerm}) => {
-    let [inpValue, setInpValue] = useState('')
-    let [ btnState, setBtnState ] = useState({
+    const [inpValue, setInpValue] = useState('')
+    const [ btnState, setBtnState ] = useState({
         btnOne: false,
         btnTwo: false,
         btnThree: false
@@ -35,14 +36,14 @@ const TodoHeader = ({toogleState, changeTerm}) => {
     }
 
     return (
-        <div>
-            <input type="text" onChange={ (e) => {
+        <div className={styles.todoListHeader}>
+            <input className={styles.inputHeader} type="text" onChange={ (e) => {
                 setInpValue(e.target.value)
                 changeTerm(e.target.value)
             } } value={inpValue}/>
-            <button disabled={ btnState.btnOne } onClick={ FnAll }>Все</button>
-            <button disabled={ btnState.btnTwo } onClick={ FnActive }>Активные</button>
-            <button disabled={ btnState.btnThree } onClick={ FnDone }>Выполненные</button>
+            <button className= { btnState.btnOne ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnOne } onClick={ FnAll }>All</button>
+            <button className={ btnState.btnTwo ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnTwo } onClick={ FnActive }>Active</button>
+            <button className={ btnState.btnThree ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnThree } onClick={ FnDone }>Done</button>
         </div>
     )
 }

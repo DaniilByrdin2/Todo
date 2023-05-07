@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import styles from './todo-list-footer.module.css'
 
 const TodoFooter = ({AddPost}) => {
     let [text, setText] = useState('')
@@ -13,13 +14,18 @@ const TodoFooter = ({AddPost}) => {
     }
 
     return (
-        <div>
-            <input 
-                type="text" 
-                onChange={onChangeText}
-                value={text}
-            />
-            <button onClick={addText}>Добавить задачу</button>
+        <div className={styles.containerFooter}>
+            <form className={styles.form}>
+                <input
+                    className={styles.footerInput}
+                    type="text"
+                    onChange={onChangeText}
+                    value={text}
+                />
+                <button type="submit" className="btn btn-outline-secondary" onClick= { (e) => {
+                    addText()
+                    e.preventDefault() } } >Add Todos</button>
+            </form>
         </div>
     )
 }

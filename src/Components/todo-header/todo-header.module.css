@@ -1,7 +1,13 @@
 .container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    height: 65px;
+    font-size: 22px;
+    padding-bottom: 10px;
 }
 .contaonerItem {
     margin-right: 10px;
+    font-weight: 600;
 }
