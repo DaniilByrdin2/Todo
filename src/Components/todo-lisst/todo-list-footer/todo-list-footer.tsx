@@ -19,16 +19,13 @@ const TodoFooter = ({
     return (
         // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <div className={styles.containerFooter}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <form className={styles.form}>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <input
                     className={styles.footerInput}
                     type="text"
                     onChange={onChangeText}
                     value={text}
                 />
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <button type="submit" className="btn btn-outline-secondary" onClick= { (e) => {
                     addText()
                     e.preventDefault() } } >Add Todos</button>

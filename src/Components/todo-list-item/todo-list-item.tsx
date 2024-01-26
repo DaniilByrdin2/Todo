@@ -15,18 +15,12 @@ const ListItem = ({
     return (
         // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <li className="list-group-item">
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <span className= { `${status ? 'active' : 'done'  } todos` } >{text}</span>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <div>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <button className="btn btn-outline-secondary" onClick={() => toogleTodoItem(id)}>
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <img src={Warning}/>
                 </button>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <button className="btn btn-danger btn-outline-secondary" onClick={() => deletePost(id)}>
-                    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                     <img src={Delete} />
                 </button>
             </div>

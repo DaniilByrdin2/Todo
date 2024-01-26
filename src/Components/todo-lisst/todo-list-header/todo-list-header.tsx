@@ -42,16 +42,12 @@ const TodoHeader = ({
     return (
         // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <div className={styles.todoListHeader}>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <input className={styles.inputHeader} type="text" onChange={ (e) => {
                 setInpValue(e.target.value)
                 changeTerm(e.target.value)
             } } value={inpValue}/>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <button className= { btnState.btnOne ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnOne } onClick={ FnAll }>All</button>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <button className={ btnState.btnTwo ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnTwo } onClick={ FnActive }>Active</button>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <button className={ btnState.btnThree ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnThree } onClick={ FnDone }>Done</button>
         </div>
     )

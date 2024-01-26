@@ -1,8 +1,8 @@
 import './App.css';
 // @ts-expect-error TS(6142): Module './Components/todo-header/todo-header' was ... Remove this comment to see the full error message
-import Header from './Components/todo-header/todo-header';
+import Header from './Components/todo-header/todo-header.tsx';
 // @ts-expect-error TS(6142): Module './Components/todo-lisst/todo-list' was res... Remove this comment to see the full error message
-import TodoList from './Components/todo-lisst/todo-list';
+import TodoList from './Components/todo-lisst/todo-list.tsx';
 import { useState } from 'react';
 
 let todoData = {
@@ -112,9 +112,7 @@ function App() {
   return (
     // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div className="App">
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Header getInfo={getInfo} state={store} />
-      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TodoList
                   term={term}
                   changeTerm={changeTerm}

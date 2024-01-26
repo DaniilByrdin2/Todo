@@ -1,10 +1,10 @@
 import React from "react";
 // @ts-expect-error TS(6142): Module '../todo-list-item/todo-list-item' was reso... Remove this comment to see the full error message
-import ListItem from '../todo-list-item/todo-list-item'
+import ListItem from '../todo-list-item/todo-list-item.tsx'
 // @ts-expect-error TS(6142): Module './todo-list-footer/todo-list-footer' was r... Remove this comment to see the full error message
-import TodoFooter from './todo-list-footer/todo-list-footer'
+import TodoFooter from './todo-list-footer/todo-list-footer.tsx'
 // @ts-expect-error TS(6142): Module './todo-list-header/todo-list-header' was r... Remove this comment to see the full error message
-import TodoHeader from './todo-list-header/todo-list-header'
+import TodoHeader from './todo-list-header/todo-list-header.tsx'
 
 
 const TodoList = ({
@@ -47,18 +47,13 @@ const TodoList = ({
     return (
         // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <div>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <div>
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <TodoHeader changeTerm={changeTerm} toogleState = {toogleState} />
             </div>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <ul className="list-group "> 
                 { fnRenderList(selectState()) }
             </ul>
-            // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <div >
-                // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
                 <TodoFooter  AddPost={AddPost} />
             </div>
         </div>
