@@ -1,5 +1,7 @@
 import './App.css';
+// @ts-expect-error TS(6142): Module './Components/todo-header/todo-header' was ... Remove this comment to see the full error message
 import Header from './Components/todo-header/todo-header';
+// @ts-expect-error TS(6142): Module './Components/todo-lisst/todo-list' was res... Remove this comment to see the full error message
 import TodoList from './Components/todo-lisst/todo-list';
 import { useState } from 'react';
 
@@ -19,7 +21,7 @@ function App() {
   const [typeToogle, setTypeToogle] = useState('all')
   const [term, setTerm] = useState(todoData.term)
 
-  const changeTerm = (text) => {
+  const changeTerm = (text: any) => {
     if (text.length === 0) {
       setStore(todoData)
     } else {
@@ -32,7 +34,7 @@ function App() {
     }
   }
 
-  const AddPost = (post, tg = typeToogle) => {
+  const AddPost = (post: any, tg = typeToogle) => {
     if (typeToogle === 'done') {
       setStore( {
         ...store,
@@ -46,12 +48,13 @@ function App() {
     }
   }
 
-  const deletePost = (id) => {
+  const deletePost = (id: any) => {
     const index = store.date.findIndex((obj) => {
       return obj.id === id
     })
     if (index !== store.date.length - 1) {
       const one = store.date.slice(0, index)
+      // @ts-expect-error TS(2339): Property 'length' does not exist on type '{ date: ... Remove this comment to see the full error message
       const two = store.date.slice(index + 1, store.length)
       setStore(
         {
@@ -82,7 +85,7 @@ function App() {
     return info
   }
 
-  const toogleTodoItem = (id) => {
+  const toogleTodoItem = (id: any) => {
     store.date.map((el) => {
       if (id === el.id) {
         let toogelEl = { ...el, status: !el.status } 
@@ -92,6 +95,7 @@ function App() {
         })
 
         const one = store.date.slice(0, index)
+        // @ts-expect-error TS(2339): Property 'length' does not exist on type '{ date: ... Remove this comment to see the full error message
         const two = store.date.slice(index + 1, store.length)
         setStore( {
           ...store,
@@ -101,13 +105,16 @@ function App() {
     })
   }
 
-  const toogleState = (params) => {
+  const toogleState = (params: any) => {
     setTypeToogle(params)
   }
 
   return (
+    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div className="App">
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <Header getInfo={getInfo} state={store} />
+      // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <TodoList
                   term={term}
                   changeTerm={changeTerm}
