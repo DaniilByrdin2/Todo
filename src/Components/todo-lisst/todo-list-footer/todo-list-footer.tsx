@@ -1,23 +1,26 @@
 import React from "react";
 import { useState } from "react";
-// @ts-expect-error TS(2307): Cannot find module './todo-list-footer.module.css'... Remove this comment to see the full error message
+
 import styles from './todo-list-footer.module.css'
 
-const TodoFooter = ({
-    AddPost
-}: any) => {
+import {TogleType} from "../../../App"
+
+interface TodoFooterProps {
+    "AddPost": (p: string, p2: TogleType | null) => void
+}
+
+const TodoFooter = ({ AddPost }: TodoFooterProps) => {
     let [text, setText] = useState('')
 
     let onChangeText = (e: any) => {
         setText(e.target.value)
     }
     let addText = () => {
-        AddPost(text)
+        AddPost(text, null)
         setText('')
     }
 
     return (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <div className={styles.containerFooter}>
             <form className={styles.form}>
                 <input

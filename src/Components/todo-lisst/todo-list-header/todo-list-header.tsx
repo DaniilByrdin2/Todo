@@ -1,14 +1,25 @@
 import React from "react";
 import { useState } from "react";
-// @ts-expect-error TS(2307): Cannot find module './todo-list-header.module.css'... Remove this comment to see the full error message
+
 import styles from './todo-list-header.module.css'
 
-const TodoHeader = ({
-    toogleState,
-    changeTerm
-}: any) => {
-    const [inpValue, setInpValue] = useState('')
-    const [ btnState, setBtnState ] = useState({
+import {TogleType} from "../../../App"
+
+
+interface TodoHeaderProps {
+    "changeTerm": (p: string) => void,
+    "toogleState": (p: TogleType) => void
+} 
+
+type btnStateType = {
+    btnOne: boolean,
+    btnTwo: boolean,
+    btnThree: boolean
+}
+
+const TodoHeader = ({ toogleState, changeTerm }: TodoHeaderProps) => {
+    const [inpValue, setInpValue] = useState<string>('')
+    const [ btnState, setBtnState ] = useState<btnStateType>({
         btnOne: false,
         btnTwo: false,
         btnThree: false
@@ -40,7 +51,6 @@ const TodoHeader = ({
     }
 
     return (
-        // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <div className={styles.todoListHeader}>
             <input className={styles.inputHeader} type="text" onChange={ (e) => {
                 setInpValue(e.target.value)

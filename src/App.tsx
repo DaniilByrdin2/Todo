@@ -1,12 +1,32 @@
-import './App.css';
-// @ts-expect-error TS(6142): Module './Components/todo-header/todo-header' was ... Remove this comment to see the full error message
-import Header from './Components/todo-header/todo-header.tsx';
-// @ts-expect-error TS(6142): Module './Components/todo-lisst/todo-list' was res... Remove this comment to see the full error message
-import TodoList from './Components/todo-lisst/todo-list.tsx';
+import React from 'react';
 import { useState } from 'react';
 
+import Header from './Components/todo-header/todo-header.tsx';
+import TodoList from './Components/todo-lisst/todo-list.tsx';
+
+import './App.css';
+
+export type getInfoType = {
+  'more': number,
+  'done': number
+}
+
+export type Task = {
+  id: number,
+  status: boolean,
+  text: string
+}
+
+export interface InitState {
+  "data": Task[],
+  "term": string
+}
+
+export type TogleType = 'all' | 'done' | "active";
+
+
 let todoData = {
-  date: [
+  data: [
     { id: 1, status: true, text: 'Drink Coffee' },
     { id: 2, status: false, text: 'Pokushat' },
     { id: 3, status: true, text: 'Pokakat' },
@@ -17,102 +37,100 @@ let todoData = {
 }
 
 function App() {
-  const [store, setStore] = useState(todoData)
-  const [typeToogle, setTypeToogle] = useState('all')
-  const [term, setTerm] = useState(todoData.term)
+  const [store, setStore] = useState<InitState>(todoData)
+  const [typeToogle, setTypeToogle] = useState<TogleType>('all')
+  const [term] = useState<string>(todoData.term)
 
-  const changeTerm = (text: any) => {
+  const changeTerm = (text: string): void => {
     if (text.length === 0) {
       setStore(todoData)
     } else {
       setStore(
         {
-          date: [...store.date].filter(el => { return el.text.indexOf(text) > -1 }),
+          data: [...store.data].filter(el => { return el.text.indexOf(text) > -1 }),
           term: text
         }
       )
     }
   }
 
-  const AddPost = (post: any, tg = typeToogle) => {
+  const AddPost = (post: string, tg = typeToogle): void => {
     if (typeToogle === 'done') {
       setStore( {
         ...store,
-        date: [...store.date, { id: Date.now(), status: false, text: post }]
+        data: [...store.data, { id: Date.now(), status: false, text: post }]
       } );
     } else {
       setStore( {
         ...store,
-        date: [...store.date, { id: Date.now(), status: true, text: post }]
+        data: [...store.data, { id: Date.now(), status: true, text: post }]
       } );
     }
   }
 
-  const deletePost = (id: any) => {
-    const index = store.date.findIndex((obj) => {
+  const deletePost = (id: number): void => {
+    const index = store.data.findIndex((obj) => {
       return obj.id === id
     })
-    if (index !== store.date.length - 1) {
-      const one = store.date.slice(0, index)
-      // @ts-expect-error TS(2339): Property 'length' does not exist on type '{ date: ... Remove this comment to see the full error message
-      const two = store.date.slice(index + 1, store.length)
+    if (index !== store.data.length - 1) {
+      const one = store.data.slice(0, index)
+      const two = store.data.slice(index + 1, store.data.length)
       setStore(
         {
           ...store,
-          date: [...one, ...two]
+          data: [...one, ...two]
         } 
       )
     }
-    if (index === store.date.length - 1) {
+    if (index === store.data.length - 1) {
       setStore(
         {
           ...store,
-          date: [...store.date.slice(0, store.date.length - 1)] 
+          data: [...store.data.slice(0, store.data.length - 1)] 
         } 
       )
     }
   }
 
-  const getInfo = () => {
+  const getInfo = (): getInfoType => {
     const info = {
       'more': 0,
       'done': 0,
     }
-    store.date.map(el => {
-      if (el.status) info.more++
-      if (!el.status) info.done++
-    })
+    store.data.forEach( (el) => {
+      if (el.status) info.more++;
+      if (!el.status) info.done++;
+    });
+
     return info
   }
 
-  const toogleTodoItem = (id: any) => {
-    store.date.map((el) => {
+  const toogleTodoItem = (id: number): void => {
+    store.data.forEach((el) => {
       if (id === el.id) {
         let toogelEl = { ...el, status: !el.status } 
 
-        const index = store.date.findIndex((obj) => {
+        const index = store.data.findIndex((obj) => {
           return obj.id === id
         })
 
-        const one = store.date.slice(0, index)
-        // @ts-expect-error TS(2339): Property 'length' does not exist on type '{ date: ... Remove this comment to see the full error message
-        const two = store.date.slice(index + 1, store.length)
+        const one = store.data.slice(0, index)
+        const two = store.data.slice(index + 1, store.data.length)
         setStore( {
           ...store,
-          date: [...one, toogelEl, ...two]
+          data: [...one, toogelEl, ...two]
         } )
       }
     })
   }
 
-  const toogleState = (params: any) => {
+  const toogleState = (params: TogleType): void => {
     setTypeToogle(params)
   }
 
   return (
-    // @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div className="App">
-      <Header getInfo={getInfo} state={store} />
+      <Header getInfo={ getInfo } state={ store } />
       <TodoList
                   term={term}
                   changeTerm={changeTerm}
