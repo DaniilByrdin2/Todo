@@ -1,6 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
+import {ColorToggleButton} from "../../UI_Components/ToogleBtn/ToogleBtn.tsx"
+import SearchIcon from '@mui/icons-material/Search';
+import {MultilineTextFields} from "../../UI_Components/Input/Input.tsx"
+
 import styles from './todo-list-header.module.css'
 
 import {TogleType} from "../../../App"
@@ -24,6 +28,12 @@ const TodoHeader = ({ toogleState, changeTerm }: TodoHeaderProps) => {
         btnTwo: false,
         btnThree: false
     })
+
+    const onChangeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setInpValue(e.target.value);
+      changeTerm(e.target.value);
+    };
+
 
     const FnAll = () => {
         toogleState('all')
@@ -50,15 +60,17 @@ const TodoHeader = ({ toogleState, changeTerm }: TodoHeaderProps) => {
         } )
     }
 
+    const FnObj = {
+        "FnAll": FnAll,
+        "FnActive": FnActive,
+        "FnDone": FnDone
+    }
+
     return (
         <div className={styles.todoListHeader}>
-            <input className={styles.inputHeader} type="text" onChange={ (e) => {
-                setInpValue(e.target.value)
-                changeTerm(e.target.value)
-            } } value={inpValue}/>
-            <button className= { btnState.btnOne ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnOne } onClick={ FnAll }>All</button>
-            <button className={ btnState.btnTwo ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnTwo } onClick={ FnActive }>Active</button>
-            <button className={ btnState.btnThree ? 'btn-info btn' : 'btn-outline-secondary btn' } disabled={ btnState.btnThree } onClick={ FnDone }>Done</button>
+            <MultilineTextFields  onChangeText = {onChangeText} value={inpValue} />
+            <SearchIcon />
+            <ColorToggleButton FnObj = {FnObj} btnState = {btnState} />
         </div>
     )
 }

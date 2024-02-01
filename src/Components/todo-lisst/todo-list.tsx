@@ -7,6 +7,10 @@ import TodoHeader from "./todo-list-header/todo-list-header.tsx";
 import { TogleType } from "../../App.tsx"
 import { InitState } from "../../App.tsx";
 import { Task } from "../../App.tsx"
+import {RowAndColumnSpacing} from "../UI_Components/Grid/GridTodoLists.tsx"
+
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
 
 
 interface TodoListProps {
@@ -20,7 +24,12 @@ interface TodoListProps {
   "AddPost": (p: string, p2: TogleType ) => void
 }
 
-
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 const TodoList = ({
   state,
@@ -55,12 +64,13 @@ const TodoList = ({
   const fnRenderList = (st: Task[]) => {
     return st.map((el: Task) => {
       return (
-        <ListItem
-          toogleTodoItem={toogleTodoItem}
-          deletePost={deletePost}
-          key={el.id}
-          item={el}
-        />
+        <Item key = { el.id }>
+          <ListItem
+            toogleTodoItem={toogleTodoItem}
+            deletePost={deletePost}
+            item={el}
+          />
+        </Item>
       );
     });
   };
@@ -70,7 +80,7 @@ const TodoList = ({
       <div>
         <TodoHeader changeTerm={changeTerm} toogleState={toogleState} />
       </div>
-      <ul className="list-group ">{fnRenderList(selectState())}</ul>
+      <RowAndColumnSpacing renderFn = { () => fnRenderList(selectState()) }/>
       <div>
         <TodoFooter AddPost={AddPost} />
       </div>

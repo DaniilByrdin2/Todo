@@ -1,9 +1,11 @@
+
+
 .todoListHeader {
     display: flex;
     justify-content: flex-end;
 }
 .inputHeader {
     width: 100%;
-    background: url('../../../Img/search.png') no-repeat 100% 2px;
+    /* background: url('../../../Img/search.png') no-repeat 100% 2px; */
     background-size: auto 98%;
 }
