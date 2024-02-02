@@ -32,9 +32,13 @@ export function ColorButtonsDelete( { id, deletePost }: ColorButtonsDeleteProps 
 
 export function ColorButtonsAdd( { addText }: ColorButtonsAddProps ) {
   return (
-      <Button onClick={ (e) => { 
-        addText() 
-        e.preventDefault() 
-      } } variant="contained" color="success">Add</Button>
+      <Button size="large"
+        onClick={(e) => {
+          addText();
+          e.preventDefault();
+        }}
+        variant="contained"
+        color="success"
+      >Add</Button>
   );
 }

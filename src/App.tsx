@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import Header from './Components/todo-header/todo-header.tsx';
-import TodoList from './Components/todo-lisst/todo-list.tsx';
+import TodoList from './Components/todo-list/todo-list.tsx';
 
 import './App.css';
 
@@ -55,6 +55,7 @@ function App() {
   }
 
   const AddPost = (post: string, tg = typeToogle): void => {
+    
     if (typeToogle === 'done') {
       setStore( {
         ...store,

@@ -67,12 +67,16 @@ const TodoHeader = ({ toogleState, changeTerm }: TodoHeaderProps) => {
     }
 
     return (
-        <div className={styles.todoListHeader}>
-            <MultilineTextFields  onChangeText = {onChangeText} value={inpValue} />
+      <div className={styles.todoListHeader}>
+        <div className={styles.inputContainer}>
+          <MultilineTextFields type = "header" onChangeText={onChangeText} value={inpValue} />
+          <div className={styles.searchIcon}>
             <SearchIcon />
-            <ColorToggleButton FnObj = {FnObj} btnState = {btnState} />
+          </div>
         </div>
-    )
+        <ColorToggleButton FnObj={FnObj} btnState={btnState} />
+      </div>
+    );
 }
 
 export default TodoHeader;

@@ -13,12 +13,11 @@ interface ListItemProps {
     "item": Task,
 }
 
-const ListItem = ({ keyyyy, item, deletePost, toogleTodoItem}: ListItemProps) => {
+const ListItem = ({ item, deletePost, toogleTodoItem}: ListItemProps) => {
     const {text, status, id} = item
 
     return (
         <div className="mmm">
-        {/* <RowAndColumnSpacing /> */}
         <li className="list-group-item">
             <span className= { `${status ? 'active' : 'done'  } todos` } >{text}</span>
             <div>

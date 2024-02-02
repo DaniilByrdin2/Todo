@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 
 
 interface TodoListProps {
+  // "footerError": boolean
   "term": string,
   "changeTerm": (p: string) => void,
   "typeToogle": TogleType,

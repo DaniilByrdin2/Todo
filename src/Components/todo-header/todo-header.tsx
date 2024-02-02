@@ -22,7 +22,7 @@ const Header = ( { getInfo, state}: HeaderProps ) => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.contaonerItem}>Todo List</div>
+            <div className={styles.contaonerItem}>Todo List 2.0</div>
             <div>
                 {info ? <div><span>More:{info.more} </span><span>Done:{info.done}</span></div>: null}
             </div>
