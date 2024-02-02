@@ -1,12 +1,12 @@
 .containerFooter {
     display: flex;
     justify-content: flex-end;
-    height: 45px;
+    width: 100%;
+    padding-left: 25px;
 }
-.footerInput {
-    width: 80%;
-}
+
 .form {
     display: flex;
+    align-items: center;
     width: 100%;
 }

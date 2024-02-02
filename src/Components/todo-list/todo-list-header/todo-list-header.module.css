@@ -1,0 +1,17 @@
+
+
+.todoListHeader {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.searchIcon {
+    z-index: 10;
+    position: absolute;
+    top: 17px;
+    left: 220px;
+}
